@@ -1,0 +1,1765 @@
+<policy active="true" signature="ee6ee669ddf2c53d9ea7e3bb4d1ed9688c13a35d">
+  <name>default</name>
+  <version>1056792</version>
+  <changed>Tue Oct 21 17:41:17 GMT-0700 2014</changed>
+  <changedUser>fikhanh@indiegogo.com</changedUser>
+  <reviewStatus>-100
+    -60</reviewStatus>
+  <riskLevelThresholds>-60
+    -30
+    -10
+    0</riskLevelThresholds>
+  <rules>
+    <rule uid="1" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighRiskTmxReasons</name>
+      <ruleType>114</ruleType>
+      <description>(TMX Summary Reason Code = 'Device_Negative_History') AND (TMX Summary Reason Code = 'Identity_Negative_History') AND (TMX Summary Reason Code = 'IP_Spoofing') AND (TMX Summary Reason Code = 'GEO_Spoofing') AND (TMX Summary Reason Code = 'Bot') AND (TMX Summary Reason Code = 'Identity_Spoofing')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>tmx_summary_reason_code</Attribute1>
+        <Attribute2>tmx_summary_reason_code</Attribute2>
+        <Attribute3>tmx_summary_reason_code</Attribute3>
+        <Attribute4>tmx_summary_reason_code</Attribute4>
+        <Attribute5>tmx_summary_reason_code</Attribute5>
+        <Attribute6>tmx_summary_reason_code</Attribute6>
+        <LogicType>AND</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Operation2>equal-to</Operation2>
+        <Operation3>equal-to</Operation3>
+        <Operation4>equal-to</Operation4>
+        <Operation5>equal-to</Operation5>
+        <Operation6>equal-to</Operation6>
+        <Value1>Device_Negative_History</Value1>
+        <Value2>Identity_Negative_History</Value2>
+        <Value3>IP_Spoofing</Value3>
+        <Value4>GEO_Spoofing</Value4>
+        <Value5>Bot</Value5>
+        <Value6>Identity_Spoofing</Value6>
+      </parameters>
+    </rule>
+    <rule uid="3" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>Regextest2</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^[^aeiou]+@[a-z0-9.-]+\.[a-z0-9]{2,4}$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^[^aeiou]+@[a-z0-9.-]+\.[a-z0-9]{2,4}$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="5" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>Regextest1</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^[a-z]+@[a-z0-9.-]+\.[a-z0-9]{2,4}$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^[a-z]+@[a-z0-9.-]+\.[a-z0-9]{2,4}$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="7" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>Regex3</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^.{7,}\@.*$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^.{7,}\@.*$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="9" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>CC</name>
+      <ruleType>114</ruleType>
+      <description>(Condition Attribute 4 = 'pldg_adyn') OR (Condition Attribute 4 = 'pldg_strp')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>condition_attrib_4</Attribute1>
+        <Attribute2>condition_attrib_4</Attribute2>
+        <LogicType>OR</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Operation2>equal-to</Operation2>
+        <Value1>pldg_adyn</Value1>
+        <Value2>pldg_strp</Value2>
+      </parameters>
+    </rule>
+    <rule uid="11" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>Low Risk</name>
+      <ruleType>114</ruleType>
+      <description>(Policy Score &gt; '10')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>policy_score</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>greater-than</Operation1>
+        <Value1>10</Value1>
+      </parameters>
+    </rule>
+    <ifRule uid="13" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>CC_tester</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance],[object RuleInstance],[object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>11
+          9
+          7
+          5
+          3</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <rule uid="15" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>OFAC</name>
+      <ruleType>22</ruleType>
+      <description>Match Countries: CU|SD|IR|SY|KP</description>
+      <summary/>
+      <parameters>
+        <local_countries>CU|SD|IR|SY|KP</local_countries>
+      </parameters>
+    </rule>
+    <rule uid="17" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="100">
+      <name>LowFraudreasonCombo</name>
+      <ruleType>114</ruleType>
+      <description>(Transaction Amount &lt; '25') AND (True IP City = Ship Address City)</description>
+      <summary/>
+      <parameters>
+        <Attribute1>transaction_amount</Attribute1>
+        <Attribute2>true_ip_city</Attribute2>
+        <LogicType>AND</LogicType>
+        <Operation1>less-than</Operation1>
+        <Operation2>equal-to</Operation2>
+        <Value1>25</Value1>
+        <Value2>$shipping_address_city</Value2>
+      </parameters>
+    </rule>
+    <rule uid="19" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="100">
+      <name>IPWhitelisted</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: whitelist; Attribute: True IP</description>
+      <summary/>
+      <parameters>
+        <Attribute>true_ip</Attribute>
+        <Scope>local</Scope>
+        <White_Black>whitelist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="21" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="100">
+      <name>ExactIDWhitelisted</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: whitelist; Attribute: Exact ID</description>
+      <summary/>
+      <parameters>
+        <Attribute>device_id</Attribute>
+        <Scope>local</Scope>
+        <White_Black>whitelist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="23" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="100">
+      <name>SmartIDWhitelisted</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: whitelist; Attribute: Smart ID</description>
+      <summary/>
+      <parameters>
+        <Attribute>fuzzy_device_id</Attribute>
+        <Scope>local</Scope>
+        <White_Black>whitelist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="25" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+      <name>NoDeviceID</name>
+      <ruleType>114</ruleType>
+      <description>(Exact ID is absent ) OR (Smart ID is absent )</description>
+      <summary/>
+      <parameters>
+        <Attribute1>device_id</Attribute1>
+        <Attribute2>fuzzy_device_id</Attribute2>
+        <LogicType>OR</LogicType>
+        <Operation1>is_absent</Operation1>
+        <Operation2>is_absent</Operation2>
+      </parameters>
+    </rule>
+    <rule uid="27" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>ExactIDBlacklisted</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: blacklist; Attribute: Exact ID</description>
+      <summary/>
+      <parameters>
+        <Attribute>device_id</Attribute>
+        <Scope>local</Scope>
+        <White_Black>blacklist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="29" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>SmartIDBlacklisted</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: blacklist; Attribute: Smart ID</description>
+      <summary/>
+      <parameters>
+        <Attribute>fuzzy_device_id</Attribute>
+        <Scope>local</Scope>
+        <White_Black>blacklist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="31" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>IPBlacklisted</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: blacklist; Attribute: True IP</description>
+      <parameters>
+        <Attribute>true_ip</Attribute>
+        <Scope>local</Scope>
+        <White_Black>blacklist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="33" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>SmartIDValid</name>
+      <ruleType>114</ruleType>
+      <description>(Smart ID Confidence &gt; '90') OR (Smart ID Confidence &lt; '100')</description>
+      <parameters>
+        <Attribute1>fuzzy_device_id_confidence</Attribute1>
+        <Attribute2>fuzzy_device_id_confidence</Attribute2>
+        <LogicType>OR</LogicType>
+        <Operation1>greater-than</Operation1>
+        <Operation2>less-than</Operation2>
+        <Value1>90</Value1>
+        <Value2>100</Value2>
+      </parameters>
+    </rule>
+    <rule uid="35" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>ExactIDInvalid</name>
+      <ruleType>114</ruleType>
+      <description>(Exact ID Match Result != 'success')</description>
+      <parameters>
+        <Attribute1>device_match_result</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>not-equal-to</Operation1>
+        <Value1>success</Value1>
+      </parameters>
+    </rule>
+    <rule uid="37" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>TimeSpentUnder15sec</name>
+      <ruleType>114</ruleType>
+      <description>(Time spent on page &lt;= '15000')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>page_time_on</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>less-than-or-equal-to</Operation1>
+        <Value1>15000</Value1>
+      </parameters>
+    </rule>
+    <ifRule uid="39" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>37</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="40" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+          <name>TimeSpentUnder30sec</name>
+          <ruleType>114</ruleType>
+          <description>(Time spent on page &lt;= '30000')</description>
+          <summary/>
+          <parameters>
+            <Attribute1>page_time_on</Attribute1>
+            <LogicType>OR</LogicType>
+            <Operation1>less-than-or-equal-to</Operation1>
+            <Value1>30000</Value1>
+          </parameters>
+        </rule>
+      </children>
+    </ifRule>
+    <rule uid="43" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>EmailMoreThan3Numbers</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^([^0-9_]*[0-9_]{4,10})\@.*$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^([^0-9_]*[0-9_]{4,10})\@.*$</Regex>
+      </parameters>
+    </rule>
+    <ifRule uid="45" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>43</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="46" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+          <name>EMailNameWithNonLetters</name>
+          <ruleType>127</ruleType>
+          <description>Attribute: Account Email; Regular Expression: ^([^0-9_]*[0-9_]){1,}\@.*$; Case Sensitive: no</description>
+          <summary/>
+          <parameters>
+            <Attribute>account_email</Attribute>
+            <CaseSensitive>no</CaseSensitive>
+            <Regex>^([^0-9_]*[0-9_]){1,}\@.*$</Regex>
+          </parameters>
+        </rule>
+      </children>
+    </ifRule>
+    <rule uid="49" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>EMail Name Too Long</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^.{20,}\@.*$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^.{20,}\@.*$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="51" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>EMailHostnamewithNonLetters</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^.*\@([^0-9]*[0-9]){4,}.*$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^.*\@([^0-9]*[0-9]){4,}.*$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="53" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>EMailHostnameTooLong</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^.*\@([^0-9]*[0-9]){4,}.*$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^.*\@([^0-9]*[0-9]){4,}.*$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="55" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>EmailDomainNoVowels</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: Account Email; Regular Expression: ^,"\@^[^aeiou].*$; Case Sensitive: no</description>
+      <summary/>
+      <parameters>
+        <Attribute>account_email</Attribute>
+        <CaseSensitive>no</CaseSensitive>
+        <Regex>^,"\@^[^aeiou].*$</Regex>
+      </parameters>
+    </rule>
+    <rule uid="57" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+      <name>PossibleVPNConnection</name>
+      <ruleType>127</ruleType>
+      <description>Attribute: True IP Organization; Regular Expression: .*(vpn|VPN)( .+)?|AnchorFree; Case Sensitive: yes</description>
+      <summary/>
+      <parameters>
+        <Attribute>true_ip_organization</Attribute>
+        <CaseSensitive>yes</CaseSensitive>
+        <Regex>.*(vpn|VPN)( .+)?|AnchorFree</Regex>
+      </parameters>
+    </rule>
+    <rule uid="59" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>DeviceNegativeReputation</name>
+      <ruleType>7</ruleType>
+      <description>List Type: blacklist</description>
+      <parameters>
+        <White_Black>blacklist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="61" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>ProxyNegativeReputation</name>
+      <ruleType>20</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="63" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>HiddenProxy</name>
+      <ruleType>52</ruleType>
+      <description>Proxy Type: hidden</description>
+      <summary/>
+      <parameters>
+        <proxy_type>hidden</proxy_type>
+      </parameters>
+    </rule>
+    <rule uid="65" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+      <name>AnonymousProxy</name>
+      <ruleType>52</ruleType>
+      <description>Proxy Type: anonymous</description>
+      <summary/>
+      <parameters>
+        <proxy_type>anonymous</proxy_type>
+      </parameters>
+    </rule>
+    <rule uid="67" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>MidsessionChange</name>
+      <ruleType>2</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="69" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-20">
+      <name>3ProxyPerDeviceDay</name>
+      <ruleType>51</ruleType>
+      <description>Time Frame: Day; Scope: Global; Primary Attribute: Exact ID; Secondary Attribute: Proxy IP; Threshold: 3</description>
+      <summary/>
+      <parameters>
+        <primary_attribute>device_id</primary_attribute>
+        <Scope>global</Scope>
+        <secondary_attribute>proxy_ip</secondary_attribute>
+        <threshold>3</threshold>
+        <timeframe>day</timeframe>
+      </parameters>
+    </rule>
+    <rule uid="71" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-60">
+      <name>6EmailPerDevice</name>
+      <ruleType>51</ruleType>
+      <description>Time Frame: Day; Scope: Local; Primary Attribute: Smart ID; Secondary Attribute: Email; Threshold: 6</description>
+      <summary/>
+      <parameters>
+        <primary_attribute>fuzzy_device_id</primary_attribute>
+        <Scope>local</Scope>
+        <secondary_attribute>account_email</secondary_attribute>
+        <threshold>6</threshold>
+        <timeframe>day</timeframe>
+      </parameters>
+    </rule>
+    <ifRule uid="73" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>71</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="74" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-55">
+          <name>5EmailPerDevice</name>
+          <ruleType>51</ruleType>
+          <description>Time Frame: Month; Scope: Local; Primary Attribute: Smart ID; Secondary Attribute: Email; Threshold: 5</description>
+          <summary/>
+          <parameters>
+            <primary_attribute>fuzzy_device_id</primary_attribute>
+            <Scope>local</Scope>
+            <secondary_attribute>account_email</secondary_attribute>
+            <threshold>5</threshold>
+            <timeframe>month</timeframe>
+          </parameters>
+        </rule>
+        <ifRule uid="76" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>74</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="77" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-50">
+              <name>4EmailPerDevice</name>
+              <ruleType>51</ruleType>
+              <description>Time Frame: Month; Scope: Local; Primary Attribute: Smart ID; Secondary Attribute: Email; Threshold: 4</description>
+              <summary/>
+              <parameters>
+                <primary_attribute>fuzzy_device_id</primary_attribute>
+                <Scope>local</Scope>
+                <secondary_attribute>account_email</secondary_attribute>
+                <threshold>4</threshold>
+                <timeframe>month</timeframe>
+              </parameters>
+            </rule>
+            <ifRule uid="79" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+              <name>IF</name>
+              <ruleType>120</ruleType>
+              <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+              <summary/>
+              <parameters>
+                <Dependencies>77</Dependencies>
+                <LogicType>AND</LogicType>
+              </parameters>
+              <children>
+                <rule uid="80" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-45">
+                  <name>3EmailPerDevice</name>
+                  <ruleType>51</ruleType>
+                  <description>Time Frame: Month; Scope: Local; Primary Attribute: Smart ID; Secondary Attribute: Email; Threshold: 3</description>
+                  <summary/>
+                  <parameters>
+                    <primary_attribute>fuzzy_device_id</primary_attribute>
+                    <Scope>local</Scope>
+                    <secondary_attribute>account_email</secondary_attribute>
+                    <threshold>3</threshold>
+                    <timeframe>month</timeframe>
+                  </parameters>
+                </rule>
+              </children>
+            </ifRule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+    <rule uid="85" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-25">
+      <name>DeviceProxyGeoMismatch</name>
+      <ruleType>21</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="87" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>DeviceAccountGeoMismatch</name>
+      <ruleType>24</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="89" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-50">
+      <name>DeviceCountriesNotAllowed</name>
+      <ruleType>111</ruleType>
+      <description>Scope: Local; List Type: blacklist; Attribute: True IP Geo</description>
+      <parameters>
+        <Attribute>true_ip_geo</Attribute>
+        <Scope>local</Scope>
+        <White_Black>blacklist</White_Black>
+      </parameters>
+    </rule>
+    <rule uid="91" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+      <name>AnonymousProxy</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy Type is absent ) AND (True IP Geo = 'A1')</description>
+      <parameters>
+        <Attribute1>proxy_type</Attribute1>
+        <Attribute2>true_ip_geo</Attribute2>
+        <LogicType>AND</LogicType>
+        <Operation1>is_absent</Operation1>
+        <Operation2>equal-to</Operation2>
+        <Value2>A1</Value2>
+      </parameters>
+    </rule>
+    <rule uid="93" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>SatelliteISP</name>
+      <ruleType>114</ruleType>
+      <description>(True IP Geo = 'A2')</description>
+      <parameters>
+        <Attribute1>true_ip_geo</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Value1>A2</Value1>
+      </parameters>
+    </rule>
+    <rule uid="95" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-25">
+      <name>SatelliteProxyISP</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy Type != 'hidden') AND (Proxy IP Geo = 'A2')</description>
+      <parameters>
+        <Attribute1>proxy_type</Attribute1>
+        <Attribute2>proxy_ip_geo</Attribute2>
+        <LogicType>AND</LogicType>
+        <Operation1>not-equal-to</Operation1>
+        <Operation2>equal-to</Operation2>
+        <Value1>hidden</Value1>
+        <Value2>A2</Value2>
+      </parameters>
+    </rule>
+    <ifRule uid="97" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <parameters>
+        <Dependencies>33</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="98" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-25">
+          <name>PossibleCookieWiping</name>
+          <ruleType>51</ruleType>
+          <description>Time Frame: Hour; Scope: Local; Primary Attribute: Smart ID; Secondary Attribute: Exact ID; Threshold: 3</description>
+          <summary/>
+          <parameters>
+            <primary_attribute>fuzzy_device_id</primary_attribute>
+            <Scope>local</Scope>
+            <secondary_attribute>device_id</secondary_attribute>
+            <threshold>3</threshold>
+            <timeframe>hour</timeframe>
+          </parameters>
+        </rule>
+      </children>
+    </ifRule>
+    <rule uid="101" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>BogonProxy</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy IP Trust Tags contains 'BOGON')</description>
+      <parameters>
+        <Attribute1>proxy_ip_attributes</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Value1>BOGON</Value1>
+      </parameters>
+    </rule>
+    <rule uid="103" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>DialupProxy</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy IP Organization contains 'dialup') OR (Proxy IP Organization contains 'dial up') OR (Proxy IP Organization contains 'dial-up') OR (Proxy IP Organization contains 'dial-in') OR (Proxy IP Organization contains 'dial in') OR (Proxy IP Organization contains 'dial-pool')</description>
+      <parameters>
+        <Attribute1>proxy_ip_organization</Attribute1>
+        <Attribute2>proxy_ip_organization</Attribute2>
+        <Attribute3>proxy_ip_organization</Attribute3>
+        <Attribute4>proxy_ip_organization</Attribute4>
+        <Attribute5>proxy_ip_organization</Attribute5>
+        <Attribute6>proxy_ip_organization</Attribute6>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Operation2>contains</Operation2>
+        <Operation3>contains</Operation3>
+        <Operation4>contains</Operation4>
+        <Operation5>contains</Operation5>
+        <Operation6>contains</Operation6>
+        <Value1>dialup</Value1>
+        <Value2>dial up</Value2>
+        <Value3>dial-up</Value3>
+        <Value4>dial-in</Value4>
+        <Value5>dial in</Value5>
+        <Value6>dial-pool</Value6>
+      </parameters>
+    </rule>
+    <ifRule uid="105" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>UnusualProxyAttributes</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: OR; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <parameters>
+        <Dependencies>103
+          101</Dependencies>
+        <LogicType>OR</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <rule uid="107" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-10">
+      <name>Dial-upConnection</name>
+      <ruleType>114</ruleType>
+      <description>(True IP Organization contains 'dialup') OR (True IP Organization contains 'dial up') OR (True IP Organization contains 'dial-up') OR (True IP Organization contains 'dial-in') OR (True IP Organization contains 'dial in') OR (True IP Organization contains 'dial-pool')</description>
+      <parameters>
+        <Attribute1>true_ip_organization</Attribute1>
+        <Attribute2>true_ip_organization</Attribute2>
+        <Attribute3>true_ip_organization</Attribute3>
+        <Attribute4>true_ip_organization</Attribute4>
+        <Attribute5>true_ip_organization</Attribute5>
+        <Attribute6>true_ip_organization</Attribute6>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Operation2>contains</Operation2>
+        <Operation3>contains</Operation3>
+        <Operation4>contains</Operation4>
+        <Operation5>contains</Operation5>
+        <Operation6>contains</Operation6>
+        <Value1>dialup</Value1>
+        <Value2>dial up</Value2>
+        <Value3>dial-up</Value3>
+        <Value4>dial-in</Value4>
+        <Value5>dial in</Value5>
+        <Value6>dial-pool</Value6>
+      </parameters>
+    </rule>
+    <rule uid="109" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>2DevicePayment</name>
+      <ruleType>107</ruleType>
+      <description>Time Frame: Day; Scope: Local; Entity Type: Exact ID; Event Type: Payment; History Depth: 100; Threshold: 5</description>
+      <summary/>
+      <parameters>
+        <EntityType>device_id</EntityType>
+        <EventType>payment</EventType>
+        <HistoryDepth>100</HistoryDepth>
+        <Scope>local</Scope>
+        <threshold>5</threshold>
+        <TimeFrame>day</TimeFrame>
+      </parameters>
+    </rule>
+    <rule uid="111" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-40">
+      <name>DistanceTraveledOver500Miles</name>
+      <ruleType>128</ruleType>
+      <description>Source: IP Geo; Time Frame: Day; Scope: Global; Entity Type: Exact ID; Threshold: 500; Units: miles</description>
+      <summary/>
+      <parameters>
+        <EntityType>device_id</EntityType>
+        <Scope>global</Scope>
+        <Source>True IP</Source>
+        <Threshold>500</Threshold>
+        <TimeFrame>day</TimeFrame>
+        <Unit>M</Unit>
+      </parameters>
+    </rule>
+    <ifRule uid="113" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>111</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="114" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-25">
+          <name>DistanceTraveled250Miles</name>
+          <ruleType>128</ruleType>
+          <description>Source: IP Geo; Time Frame: Day; Scope: Local; Entity Type: Smart ID; Threshold: 250; Units: miles</description>
+          <summary/>
+          <parameters>
+            <EntityType>fuzzy_device_id</EntityType>
+            <Scope>local</Scope>
+            <Source>True IP</Source>
+            <Threshold>250</Threshold>
+            <TimeFrame>day</TimeFrame>
+            <Unit>M</Unit>
+          </parameters>
+        </rule>
+        <ifRule uid="116" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>114</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="117" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+              <name>DistanceTraveled50Miles</name>
+              <ruleType>128</ruleType>
+              <description>Source: IP Geo; Time Frame: Day; Scope: Local; Entity Type: Smart ID; Threshold: 50; Units: miles</description>
+              <summary/>
+              <parameters>
+                <EntityType>fuzzy_device_id</EntityType>
+                <Scope>local</Scope>
+                <Source>True IP</Source>
+                <Threshold>50</Threshold>
+                <TimeFrame>day</TimeFrame>
+                <Unit>M</Unit>
+              </parameters>
+            </rule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+    <rule uid="121" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="30">
+      <name>GlobalEMailOver6Month</name>
+      <ruleType>124</ruleType>
+      <description>Time Source: Entity First Seen; Source Entity: Email; Comparison: &gt;; Threshold: 6 Months</description>
+      <summary/>
+      <parameters>
+        <attribute>first_seen</attribute>
+        <EntityType>account_email</EntityType>
+        <Operator>Greater_Than</Operator>
+        <TimeFrame>6 months</TimeFrame>
+      </parameters>
+    </rule>
+    <ifRule uid="123" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>121</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="124" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="25">
+          <name>GobalEmailOver3Month</name>
+          <ruleType>124</ruleType>
+          <description>Time Source: Entity First Seen; Source Entity: Email; Comparison: &gt;; Threshold: 3 Months</description>
+          <summary/>
+          <parameters>
+            <attribute>first_seen</attribute>
+            <EntityType>account_email</EntityType>
+            <Operator>Greater_Than</Operator>
+            <TimeFrame>3 months</TimeFrame>
+          </parameters>
+        </rule>
+        <ifRule uid="126" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>124</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="127" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="10">
+              <name>GlobalEMailOverOneMonth</name>
+              <ruleType>124</ruleType>
+              <description>Time Source: Entity First Seen; Source Entity: Email; Comparison: &gt;; Threshold: 1 Month</description>
+              <summary/>
+              <parameters>
+                <attribute>first_seen</attribute>
+                <EntityType>account_email</EntityType>
+                <Operator>Greater_Than</Operator>
+                <TimeFrame>month</TimeFrame>
+              </parameters>
+            </rule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+    <rule uid="131" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>CreditCardShipAddressGeoMismatch</name>
+      <ruleType>25</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="133" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>CreditCardBillAddressGeoMismatch</name>
+      <ruleType>24</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="135" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>CreditCardBINShipAddressGeoMismatch</name>
+      <ruleType>55</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="137" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>CreditCardBINBillAddressGeoMismatch</name>
+      <ruleType>54</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="139" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>CreditCardBINDeviceGeoMismatch</name>
+      <ruleType>23</ruleType>
+      <description/>
+      <parameters/>
+    </rule>
+    <rule uid="141" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>OpenProxy</name>
+      <ruleType>52</ruleType>
+      <description>Proxy Type: open</description>
+      <parameters>
+        <proxy_type>open</proxy_type>
+      </parameters>
+    </rule>
+    <rule uid="143" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>TransparentProxy</name>
+      <ruleType>52</ruleType>
+      <description>Proxy Type: transparent</description>
+      <parameters>
+        <proxy_type>transparent</proxy_type>
+      </parameters>
+    </rule>
+    <rule uid="145" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>ProxyTrueOrganizationMismatch</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy IP Organization != True IP Organization) AND (Proxy IP Organization is_present ) AND (True IP Organization is_present )</description>
+      <parameters>
+        <Attribute1>proxy_ip_organization</Attribute1>
+        <Attribute2>proxy_ip_organization</Attribute2>
+        <Attribute3>true_ip_organization</Attribute3>
+        <LogicType>AND</LogicType>
+        <Operation1>not-equal-to</Operation1>
+        <Operation2>is_present</Operation2>
+        <Operation3>is_present</Operation3>
+        <Value1>$true_ip_organization</Value1>
+      </parameters>
+    </rule>
+    <rule uid="147" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>ProxyTrueISPMismatch</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy IP ISP = True IP ISP) AND (Proxy IP ISP is_present ) AND (True IP ISP is_present )</description>
+      <parameters>
+        <Attribute1>proxy_ip_isp</Attribute1>
+        <Attribute2>proxy_ip_isp</Attribute2>
+        <Attribute3>true_ip_isp</Attribute3>
+        <LogicType>AND</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Operation2>is_present</Operation2>
+        <Operation3>is_present</Operation3>
+        <Value1>$true_ip_isp</Value1>
+      </parameters>
+    </rule>
+    <rule uid="149" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>ProxyTrueRegionMismatch</name>
+      <ruleType>114</ruleType>
+      <description>(True IP Region != Proxy IP Region) AND (True IP Region is_present ) AND (Proxy IP Region is_present )</description>
+      <parameters>
+        <Attribute1>true_ip_region</Attribute1>
+        <Attribute2>true_ip_region</Attribute2>
+        <Attribute3>proxy_ip_region</Attribute3>
+        <LogicType>AND</LogicType>
+        <Operation1>not-equal-to</Operation1>
+        <Operation2>is_present</Operation2>
+        <Operation3>is_present</Operation3>
+        <Value1>$proxy_ip_region</Value1>
+      </parameters>
+    </rule>
+    <rule uid="151" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>ProxyTrueCityMismatch</name>
+      <ruleType>114</ruleType>
+      <description>(Proxy IP City != True IP City) AND (Proxy IP City is_present ) AND (True IP City is_present )</description>
+      <parameters>
+        <Attribute1>proxy_ip_city</Attribute1>
+        <Attribute2>proxy_ip_city</Attribute2>
+        <Attribute3>true_ip_city</Attribute3>
+        <LogicType>AND</LogicType>
+        <Operation1>not-equal-to</Operation1>
+        <Operation2>is_present</Operation2>
+        <Operation3>is_present</Operation3>
+        <Value1>$true_ip_city</Value1>
+      </parameters>
+    </rule>
+    <rule uid="153" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>TransactionValueDay</name>
+      <ruleType>105</ruleType>
+      <description>Time Frame: Day; Scope: Local; Entity Type: Exact ID; Event Type: All; Operator: &gt;; Threshold: 100.00; Currency: USD (US dollar)</description>
+      <parameters>
+        <Currency>USD</Currency>
+        <EntityType>device_id</EntityType>
+        <EventType>all</EventType>
+        <Operator>greater</Operator>
+        <Scope>local</Scope>
+        <threshold>100.00</threshold>
+        <TimeFrame>day</TimeFrame>
+      </parameters>
+    </rule>
+    <rule uid="155" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>FlashImagesCookiesDisabled</name>
+      <ruleType>114</ruleType>
+      <description>(Flash Enabled = 'no') AND (Images Enabled = 'no') AND (Cookies Enabled = 'no')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>enabled_fl</Attribute1>
+        <Attribute2>enabled_im</Attribute2>
+        <Attribute3>enabled_ck</Attribute3>
+        <LogicType>AND</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Operation2>equal-to</Operation2>
+        <Operation3>equal-to</Operation3>
+        <Value1>no</Value1>
+        <Value2>no</Value2>
+        <Value3>no</Value3>
+      </parameters>
+    </rule>
+    <ifRule uid="157" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <parameters>
+        <Dependencies>155</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="158" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+          <name>FlashCookiesDisabled</name>
+          <ruleType>114</ruleType>
+          <description>(Flash Enabled = 'no') AND (Cookies Enabled = 'no')</description>
+          <summary/>
+          <parameters>
+            <Attribute1>enabled_fl</Attribute1>
+            <Attribute2>enabled_ck</Attribute2>
+            <LogicType>AND</LogicType>
+            <Operation1>equal-to</Operation1>
+            <Operation2>equal-to</Operation2>
+            <Value1>no</Value1>
+            <Value2>no</Value2>
+          </parameters>
+        </rule>
+        <ifRule uid="160" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>158</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="161" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+              <name>ImagesDisabled</name>
+              <ruleType>114</ruleType>
+              <description>(Images Enabled = 'no')</description>
+              <summary/>
+              <parameters>
+                <Attribute1>enabled_im</Attribute1>
+                <LogicType>OR</LogicType>
+                <Operation1>equal-to</Operation1>
+                <Value1>no</Value1>
+              </parameters>
+            </rule>
+            <rule uid="163" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+              <name>CookiesDisabled</name>
+              <ruleType>114</ruleType>
+              <description>(Cookies Enabled = 'no')</description>
+              <summary/>
+              <parameters>
+                <Attribute1>enabled_ck</Attribute1>
+                <LogicType>OR</LogicType>
+                <Operation1>equal-to</Operation1>
+                <Value1>no</Value1>
+              </parameters>
+            </rule>
+            <rule uid="165" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+              <name>FlashDisabled</name>
+              <ruleType>114</ruleType>
+              <description>(Flash Enabled = 'no')</description>
+              <summary/>
+              <parameters>
+                <Attribute1>enabled_fl</Attribute1>
+                <LogicType>OR</LogicType>
+                <Operation1>equal-to</Operation1>
+                <Value1>no</Value1>
+              </parameters>
+            </rule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+    <rule uid="169" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-35">
+      <name>HIghRiskCountry</name>
+      <ruleType>22</ruleType>
+      <description>Match Countries: GH|BJ|CI|CO|PK|VN|TN</description>
+      <summary/>
+      <parameters>
+        <local_countries>GH|BJ|CI|CO|PK|VN|TN</local_countries>
+      </parameters>
+    </rule>
+    <rule uid="171" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-25">
+      <name>MediumRiskCountry</name>
+      <ruleType>22</ruleType>
+      <description>Match Countries: NG|GE|EG|LT|VE|MX|BG|KE|EE|PH|SA|RU|PE|RO|IN</description>
+      <summary/>
+      <parameters>
+        <local_countries>NG|GE|EG|LT|VE|MX|BG|KE|EE|PH|SA|RU|PE|RO|IN</local_countries>
+      </parameters>
+    </rule>
+    <rule uid="173" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="25">
+      <name>LowRiskCountry</name>
+      <ruleType>22</ruleType>
+      <description>Match Countries: JP|NZ|TW|SK</description>
+      <summary/>
+      <parameters>
+        <local_countries>JP|NZ|TW|SK</local_countries>
+      </parameters>
+    </rule>
+    <rule uid="175" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>Shipping Address Exists</name>
+      <ruleType>114</ruleType>
+      <description>(Ship Address City is_present )</description>
+      <summary/>
+      <parameters>
+        <Attribute1>shipping_address_city</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>is_present</Operation1>
+      </parameters>
+    </rule>
+    <ifRule uid="177" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>175</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="178" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+          <name>IPRegionMisMatch</name>
+          <ruleType>114</ruleType>
+          <description>(True IP Region != Ship Address State)</description>
+          <summary/>
+          <parameters>
+            <Attribute1>true_ip_region</Attribute1>
+            <LogicType>OR</LogicType>
+            <Operation1>not-equal-to</Operation1>
+            <Value1>$shipping_address_state</Value1>
+          </parameters>
+        </rule>
+        <rule uid="180" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="10">
+          <name>IPShipStateMatch</name>
+          <ruleType>114</ruleType>
+          <description>(True IP Region = Ship Address State)</description>
+          <summary/>
+          <parameters>
+            <Attribute1>true_ip_region</Attribute1>
+            <LogicType>OR</LogicType>
+            <Operation1>equal-to</Operation1>
+            <Value1>$shipping_address_state</Value1>
+          </parameters>
+        </rule>
+      </children>
+    </ifRule>
+    <rule uid="183" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+      <name>TimeZoneAnomaly</name>
+      <ruleType>114</ruleType>
+      <description>(Time Zone Offset Anomaly = 'yes')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>timezone_offset_anomaly</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Value1>yes</Value1>
+      </parameters>
+    </rule>
+    <rule uid="185" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>ScreenResAnomaly</name>
+      <ruleType>114</ruleType>
+      <description>(Screen Res Anomaly = 'yes')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>screen_res_anomaly</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Value1>yes</Value1>
+      </parameters>
+    </rule>
+    <rule uid="187" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="5">
+      <name>MacOS</name>
+      <ruleType>114</ruleType>
+      <description>(UA OS contains 'macosx') OR (UA OS contains 'Intel Mac OS 10_6_6') OR (UA OS contains 'Intel Mac OS X 10.8') OR (UA OS contains 'Intel Mac OS X 10_8_2')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>ua_os</Attribute1>
+        <Attribute2>ua_os</Attribute2>
+        <Attribute3>ua_os</Attribute3>
+        <Attribute4>ua_os</Attribute4>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Operation2>contains</Operation2>
+        <Operation3>contains</Operation3>
+        <Operation4>contains</Operation4>
+        <Value1>macosx</Value1>
+        <Value2>Intel Mac OS 10_6_6</Value2>
+        <Value3>Intel Mac OS X 10.8</Value3>
+        <Value4>Intel Mac OS X 10_8_2</Value4>
+      </parameters>
+    </rule>
+    <rule uid="189" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>Windows</name>
+      <ruleType>114</ruleType>
+      <description>(UA OS contains 'win')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>ua_os</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Value1>win</Value1>
+      </parameters>
+    </rule>
+    <rule uid="191" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="25">
+      <name>8ContributionPerDay</name>
+      <ruleType>108</ruleType>
+      <description>Time Frame: Day; Scope: Local; Primary Attribute: Exact ID; Secondary Attribute: Smart ID; Event Type: Payment; Threshold: 8</description>
+      <summary/>
+      <parameters>
+        <EventType>payment</EventType>
+        <primary_attribute>device_id</primary_attribute>
+        <Scope>local</Scope>
+        <secondary_attribute>fuzzy_device_id</secondary_attribute>
+        <threshold>8</threshold>
+        <TimeFrame>day</TimeFrame>
+      </parameters>
+    </rule>
+    <ifRule uid="193" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>191</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="194" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="20">
+          <name>7ContributionPerDay</name>
+          <ruleType>108</ruleType>
+          <description>Time Frame: Day; Scope: Local; Primary Attribute: Exact ID; Secondary Attribute: Smart ID; Event Type: Payment; Threshold: 7</description>
+          <summary/>
+          <parameters>
+            <EventType>payment</EventType>
+            <primary_attribute>device_id</primary_attribute>
+            <Scope>local</Scope>
+            <secondary_attribute>fuzzy_device_id</secondary_attribute>
+            <threshold>7</threshold>
+            <TimeFrame>day</TimeFrame>
+          </parameters>
+        </rule>
+        <ifRule uid="196" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>194</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="197" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="15">
+              <name>6ContributionPerDay</name>
+              <ruleType>108</ruleType>
+              <description>Time Frame: Day; Scope: Local; Primary Attribute: Exact ID; Secondary Attribute: Smart ID; Event Type: Payment; Threshold: 6</description>
+              <summary/>
+              <parameters>
+                <EventType>payment</EventType>
+                <primary_attribute>device_id</primary_attribute>
+                <Scope>local</Scope>
+                <secondary_attribute>fuzzy_device_id</secondary_attribute>
+                <threshold>6</threshold>
+                <TimeFrame>day</TimeFrame>
+              </parameters>
+            </rule>
+            <ifRule uid="199" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+              <name>IF</name>
+              <ruleType>120</ruleType>
+              <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+              <summary/>
+              <parameters>
+                <Dependencies>197</Dependencies>
+                <LogicType>AND</LogicType>
+              </parameters>
+              <children>
+                <rule uid="200" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+                  <name>5ContributionPerDay</name>
+                  <ruleType>108</ruleType>
+                  <description>Time Frame: Day; Scope: Local; Primary Attribute: Exact ID; Secondary Attribute: Smart ID; Event Type: Payment; Threshold: 5</description>
+                  <summary/>
+                  <parameters>
+                    <EventType>payment</EventType>
+                    <primary_attribute>device_id</primary_attribute>
+                    <Scope>local</Scope>
+                    <secondary_attribute>fuzzy_device_id</secondary_attribute>
+                    <threshold>5</threshold>
+                    <TimeFrame>day</TimeFrame>
+                  </parameters>
+                </rule>
+                <ifRule uid="202" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+                  <name>IF</name>
+                  <ruleType>120</ruleType>
+                  <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+                  <summary/>
+                  <parameters>
+                    <Dependencies>200</Dependencies>
+                    <LogicType>AND</LogicType>
+                  </parameters>
+                  <children>
+                    <rule uid="203" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-15">
+                      <name>4ContributionPerDay</name>
+                      <ruleType>108</ruleType>
+                      <description>Time Frame: Day; Scope: Local; Primary Attribute: Exact ID; Secondary Attribute: Account Password; Event Type: Payment; Threshold: 4</description>
+                      <summary/>
+                      <parameters>
+                        <EventType>payment</EventType>
+                        <primary_attribute>device_id</primary_attribute>
+                        <Scope>local</Scope>
+                        <secondary_attribute>password_hash</secondary_attribute>
+                        <threshold>4</threshold>
+                        <TimeFrame>day</TimeFrame>
+                      </parameters>
+                    </rule>
+                  </children>
+                </ifRule>
+              </children>
+            </ifRule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+    <rule uid="209" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="15">
+      <name>StudentEmail</name>
+      <ruleType>114</ruleType>
+      <description>(Account Email contains '.edu')</description>
+      <parameters>
+        <Attribute1>account_email</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Value1>.edu</Value1>
+      </parameters>
+    </rule>
+    <rule uid="211" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>Softsign</name>
+      <ruleType>114</ruleType>
+      <description>(Account Email contains 'softsign_')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>account_email</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Value1>softsign_</Value1>
+      </parameters>
+    </rule>
+    <ifRule uid="213" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>211</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="214" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="50">
+          <name>IGGEmail</name>
+          <ruleType>114</ruleType>
+          <description>(Account Email contains '@indiegogo.com')</description>
+          <summary/>
+          <parameters>
+            <Attribute1>account_email</Attribute1>
+            <LogicType>AND</LogicType>
+            <Operation1>contains</Operation1>
+            <Value1>@indiegogo.com</Value1>
+          </parameters>
+        </rule>
+      </children>
+    </ifRule>
+    <rule uid="217" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="15">
+      <name>BusinessEmail</name>
+      <ruleType>114</ruleType>
+      <description>(Account Email contains '.org') OR (Account Email contains '.gov') OR (Account Email contains '.mil')</description>
+      <parameters>
+        <Attribute1>account_email</Attribute1>
+        <Attribute2>account_email</Attribute2>
+        <Attribute3>account_email</Attribute3>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Operation2>contains</Operation2>
+        <Operation3>contains</Operation3>
+        <Value1>.org</Value1>
+        <Value2>.gov</Value2>
+        <Value3>.mil</Value3>
+      </parameters>
+    </rule>
+    <rule uid="219" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>FreeEmail</name>
+      <ruleType>114</ruleType>
+      <description>(Account Email contains 'yahoo.com') OR (Account Email contains 'gmail.com') OR (Account Email contains 'hotmail.com')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>account_email</Attribute1>
+        <Attribute2>account_email</Attribute2>
+        <Attribute3>account_email</Attribute3>
+        <LogicType>OR</LogicType>
+        <Operation1>contains</Operation1>
+        <Operation2>contains</Operation2>
+        <Operation3>contains</Operation3>
+        <Value1>yahoo.com</Value1>
+        <Value2>gmail.com</Value2>
+        <Value3>hotmail.com</Value3>
+      </parameters>
+    </rule>
+    <rule uid="221" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="0">
+      <name>NoShipAddress</name>
+      <ruleType>114</ruleType>
+      <description>(Ship Address State is absent ) AND (Ship Address Street1 is absent ) AND (Ship Address Zip is absent ) AND (Ship Address Country is absent ) AND (Condition Attribute 5 != 'untitled draft project')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>shipping_address_state</Attribute1>
+        <Attribute2>shipping_address_street1</Attribute2>
+        <Attribute3>shipping_address_zip</Attribute3>
+        <Attribute4>shipping_address_country</Attribute4>
+        <Attribute5>condition_attrib_5</Attribute5>
+        <LogicType>AND</LogicType>
+        <Operation1>is_absent</Operation1>
+        <Operation2>is_absent</Operation2>
+        <Operation3>is_absent</Operation3>
+        <Operation4>is_absent</Operation4>
+        <Operation5>not-equal-to</Operation5>
+        <Value5>untitled draft project</Value5>
+      </parameters>
+    </rule>
+    <rule uid="223" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="10">
+      <name>ShipAddressPresent</name>
+      <ruleType>114</ruleType>
+      <description>(Ship Address City is_present ) AND (Ship Address Country is_present ) AND (Ship Address Street1 is_present ) AND (Ship Address Zip is_present )</description>
+      <summary/>
+      <parameters>
+        <Attribute1>shipping_address_city</Attribute1>
+        <Attribute2>shipping_address_country</Attribute2>
+        <Attribute3>shipping_address_street1</Attribute3>
+        <Attribute4>shipping_address_zip</Attribute4>
+        <LogicType>AND</LogicType>
+        <Operation1>is_present</Operation1>
+        <Operation2>is_present</Operation2>
+        <Operation3>is_present</Operation3>
+        <Operation4>is_present</Operation4>
+      </parameters>
+    </rule>
+    <rule uid="225" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>UntitledCampaignContribution</name>
+      <ruleType>114</ruleType>
+      <description>(Condition Attribute 5 = 'untitled draft project') AND (Transaction Amount != 0)</description>
+      <summary/>
+      <parameters>
+        <Attribute1>condition_attrib_5</Attribute1>
+        <Attribute2>transaction_amount</Attribute2>
+        <LogicType>AND</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Operation2>not-equal-to</Operation2>
+        <Value1>untitled draft project</Value1>
+        <Value2>0</Value2>
+      </parameters>
+    </rule>
+    <rule uid="227" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>CC</name>
+      <ruleType>114</ruleType>
+      <description>(Condition Attribute 4 = 'pldg_adyn')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>condition_attrib_4</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Value1>pldg_adyn</Value1>
+      </parameters>
+    </rule>
+    <rule uid="229" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="25">
+      <name>Paypal</name>
+      <ruleType>114</ruleType>
+      <description>(Condition Attribute 4 = 'pldg_payp')</description>
+      <summary/>
+      <parameters>
+        <Attribute1>condition_attrib_4</Attribute1>
+        <LogicType>OR</LogicType>
+        <Operation1>equal-to</Operation1>
+        <Value1>pldg_payp</Value1>
+      </parameters>
+    </rule>
+    <ifRule uid="231" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>169
+          109</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="233" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>194
+          111</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="235" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>194
+          65</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="237" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>65
+          74</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="239" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="100">
+      <name>LowFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>180
+          194</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="241" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="100">
+      <name>LowFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>71
+          180</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="243" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>77
+          65</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="245" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HIghFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>111
+          194
+          74</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="247" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>221
+          194
+          91</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="249" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>65
+          194
+          74</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <ifRule uid="251" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-100">
+      <name>HighFraudReasonCombo</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance],[object RuleInstance],[object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>109
+          169
+          74</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children/>
+    </ifRule>
+    <rule uid="253" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-5">
+      <name>1Dollar</name>
+      <ruleType>109</ruleType>
+      <description>Threshold: 2; Currency: USD (US dollar); Operator: &lt;</description>
+      <summary/>
+      <parameters>
+        <Currency>USD</Currency>
+        <Operator>less</Operator>
+        <threshold>2</threshold>
+      </parameters>
+    </rule>
+    <ifRule uid="255" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <parameters>
+        <Dependencies>253</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="256" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="10">
+          <name>Under25</name>
+          <ruleType>109</ruleType>
+          <description>Threshold: 25; Currency: USD (US dollar); Operator: &lt;</description>
+          <summary/>
+          <parameters>
+            <Currency>USD</Currency>
+            <Operator>less</Operator>
+            <threshold>25</threshold>
+          </parameters>
+        </rule>
+        <ifRule uid="258" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>256</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="259" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="5">
+              <name>Under40</name>
+              <ruleType>109</ruleType>
+              <description>Threshold: 40.00; Currency: USD (US dollar); Operator: &lt;</description>
+              <summary/>
+              <parameters>
+                <Currency>USD</Currency>
+                <Operator>less</Operator>
+                <threshold>40.00</threshold>
+              </parameters>
+            </rule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+    <rule uid="263" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-50">
+      <name>Over10000</name>
+      <ruleType>109</ruleType>
+      <description>Threshold: 9999.00; Currency: USD (US dollar); Operator: &gt;</description>
+      <summary/>
+      <parameters>
+        <Currency>USD</Currency>
+        <Operator>greater</Operator>
+        <threshold>9999.00</threshold>
+      </parameters>
+    </rule>
+    <ifRule uid="265" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+      <name>IF</name>
+      <ruleType>120</ruleType>
+      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+      <summary/>
+      <parameters>
+        <Dependencies>263</Dependencies>
+        <LogicType>AND</LogicType>
+      </parameters>
+      <children>
+        <rule uid="266" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-45">
+          <name>Over5000</name>
+          <ruleType>109</ruleType>
+          <description>Threshold: 4999.00; Currency: USD (US dollar); Operator: &gt;</description>
+          <summary/>
+          <parameters>
+            <Currency>USD</Currency>
+            <Operator>greater</Operator>
+            <threshold>4999.00</threshold>
+          </parameters>
+        </rule>
+        <ifRule uid="268" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+          <name>IF</name>
+          <ruleType>120</ruleType>
+          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+          <summary/>
+          <parameters>
+            <Dependencies>266</Dependencies>
+            <LogicType>AND</LogicType>
+          </parameters>
+          <children>
+            <rule uid="269" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-40">
+              <name>Over4000</name>
+              <ruleType>109</ruleType>
+              <description>Threshold: 3999.00; Currency: USD (US dollar); Operator: &gt;</description>
+              <summary/>
+              <parameters>
+                <Currency>USD</Currency>
+                <Operator>greater</Operator>
+                <threshold>3999.00</threshold>
+              </parameters>
+            </rule>
+            <ifRule uid="271" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+              <name>IF</name>
+              <ruleType>120</ruleType>
+              <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+              <summary/>
+              <parameters>
+                <Dependencies>269</Dependencies>
+                <LogicType>AND</LogicType>
+              </parameters>
+              <children>
+                <rule uid="272" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-35">
+                  <name>Over3000</name>
+                  <ruleType>109</ruleType>
+                  <description>Threshold: 2999.00; Currency: USD (US dollar); Operator: &gt;</description>
+                  <summary/>
+                  <parameters>
+                    <Currency>USD</Currency>
+                    <Operator>greater</Operator>
+                    <threshold>2999.00</threshold>
+                  </parameters>
+                </rule>
+                <ifRule uid="274" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+                  <name>IF</name>
+                  <ruleType>120</ruleType>
+                  <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+                  <summary/>
+                  <parameters>
+                    <Dependencies>272</Dependencies>
+                    <LogicType>AND</LogicType>
+                  </parameters>
+                  <children>
+                    <rule uid="275" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-30">
+                      <name>Over2000</name>
+                      <ruleType>109</ruleType>
+                      <description>Threshold: 1999.00; Currency: USD (US dollar); Operator: &gt;</description>
+                      <summary/>
+                      <parameters>
+                        <Currency>USD</Currency>
+                        <Operator>greater</Operator>
+                        <threshold>1999.00</threshold>
+                      </parameters>
+                    </rule>
+                    <ifRule uid="277" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+                      <name>IF</name>
+                      <ruleType>120</ruleType>
+                      <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+                      <summary/>
+                      <parameters>
+                        <Dependencies>275</Dependencies>
+                        <LogicType>AND</LogicType>
+                      </parameters>
+                      <children>
+                        <rule uid="278" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-25">
+                          <name>Over1000</name>
+                          <ruleType>109</ruleType>
+                          <description>Threshold: 999.00; Currency: USD (US dollar); Operator: &gt;</description>
+                          <summary/>
+                          <parameters>
+                            <Currency>USD</Currency>
+                            <Operator>greater</Operator>
+                            <threshold>999.00</threshold>
+                          </parameters>
+                        </rule>
+                        <ifRule uid="280" active="false" generateReasonCode="false" generateSummaryReasonCode="false" invert="true" revision="0" riskWeight="0">
+                          <name>IF</name>
+                          <ruleType>120</ruleType>
+                          <description>Logic Type: AND; Dependencies: [object RuleInstance]</description>
+                          <summary/>
+                          <parameters>
+                            <Dependencies>278</Dependencies>
+                            <LogicType>AND</LogicType>
+                          </parameters>
+                          <children>
+                            <rule uid="281" active="false" generateReasonCode="true" generateSummaryReasonCode="false" invert="false" revision="0" riskWeight="-20">
+                              <name>Over 500</name>
+                              <ruleType>109</ruleType>
+                              <description>Threshold: 499.00; Currency: USD (US dollar); Operator: &gt;</description>
+                              <summary/>
+                              <parameters>
+                                <Currency>USD</Currency>
+                                <Operator>greater</Operator>
+                                <threshold>499.00</threshold>
+                              </parameters>
+                            </rule>
+                          </children>
+                        </ifRule>
+                      </children>
+                    </ifRule>
+                  </children>
+                </ifRule>
+              </children>
+            </ifRule>
+          </children>
+        </ifRule>
+      </children>
+    </ifRule>
+  </rules>
+</policy>
